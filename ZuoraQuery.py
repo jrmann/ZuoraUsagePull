@@ -53,7 +53,7 @@ for record in zuora.query_all(
         i['account_name'] = record['Name']
         usage_records.append(i)
 
-        df = pd.DataFrame(usage_records)
+df = pd.DataFrame(usage_records)
 df['usage_month'] = df['StartDateTime'].astype('datetime64[M]')
 grouped = df.groupby(['account_name','account_number','usage_month','UOM']).Quantity.sum().reset_index()
 df.head(10)
